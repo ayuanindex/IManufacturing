@@ -7,22 +7,8 @@
     android:orientation="vertical"
     tools:context=".TestActivity">
 
-
-    <TextView
-        android:id="@+id/addFragment"
-        android:padding="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:textSize="35sp"
-        android:text="样例：跳转进入此原生页面完成相应试题内容" />
-
     <FrameLayout
         android:id="@+id/fragmentLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
-
-
+        android:layout_height="match_parent"></FrameLayout>
 </LinearLayout>

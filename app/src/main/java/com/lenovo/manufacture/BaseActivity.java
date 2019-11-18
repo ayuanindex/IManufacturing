@@ -27,12 +27,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void initView() {
         frameLayout = (FrameLayout) findViewById(R.id.webView1);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        initWebView();
     }
 
-    protected void initWebView() {
+    protected void initWebView(TWebView webView, FrameLayout frameLayout) {
 
-        TWebView webView = new TWebView(this, null);
         frameLayout.addView(webView, new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
@@ -81,7 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         //请求重点
         webView.requestFocus();
         //添加Javascript接口
-        setJavaScriptInterface();
+        addJavaScriptInterface();
         WebSettings webSetting = webView.getSettings();
         //设置允许文件访问
         webSetting.setAllowFileAccess(true);
@@ -121,5 +119,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         webSetting.setDefaultZoom(zoomDensity);
     }
 
-    public abstract void setJavaScriptInterface();
+    public abstract void addJavaScriptInterface();
 }
