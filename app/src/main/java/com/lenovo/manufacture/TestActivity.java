@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
@@ -50,6 +51,7 @@ public class TestActivity extends BaseActivity {
             this.activity = activity;
         }
 
+        @JavascriptInterface
         public void onBack() {
             finish();
         }
