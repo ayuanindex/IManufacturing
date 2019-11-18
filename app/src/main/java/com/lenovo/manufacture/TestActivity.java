@@ -32,7 +32,7 @@ public class TestActivity extends BaseActivity {
         fragmentLayout = (FrameLayout) findViewById(R.id.fragmentLayout);
         webView = new TWebView(this);
 
-        initWebView(webView, fragmentLayout, "file:///android_asset/index.html");
+        initWebView(webView, fragmentLayout, "file:///android_asset/one/SalesReport.html");
     }
 
     @SuppressLint("JavascriptInterface")

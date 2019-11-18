@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>销售报表</title>
+    <script src="../util.js"></script>
+    <style type="text/css">
+        /*div {
+            border-radius: 10px;
+        }*/
+
+        body {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /*头部*/
+        #heading {
+            background: #ffffff;
+            display: flex;
+            height: 48px;
+        }
+
+        #heading > img {
+            position: fixed;
+            overflow: hidden;
+            text-align: center;
+            height: 28px;
+            width: 28px;
+            margin: 10px;
+        }
+
+        #heading > p {
+            margin: auto;
+            line-height: 44px;
+        }
+
+        /*页面主体*/
+        #content {
+            background: #C0C0C0;
+            /*padding: 1px;*/
+            margin: 0;
+            width: 100%;
+            height: 510px;
+            overflow: hidden;
+            /*800(手机屏幕高度) - 558（浏览器调试时模拟的高度） = 242(相当于手机状态栏位置)*/
+            display: flex;
+            align-content: center;
+        }
+
+        #left_content,
+        #right_content {
+            width: 50%;
+            align-content: center;
+        }
+
+        #left_content_top {
+            padding: 10px;
+            background: #ffffff;
+            width: auto;
+            height: min-content;
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+
+        #left_content_top > p {
+            margin: 0 auto;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        #left_content_center {
+            width: auto;
+            display: flex;
+        }
+
+        #left_content_center div {
+            margin-top: 10px;
+            margin-left: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width: 100%;
+            height: min-content;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        #left_content_center div p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        #left_content_center div:nth-child(3) {
+            margin-right: 5px;
+        }
+
+        #left_content_center div > p:nth-child(2) {
+            margin: 10px auto;
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+        #left_content_bottom {
+            margin: 10px 5px 10px 10px;
+            background: #ffffff;
+            width: auto;
+            height: 274px;
+            text-align: center;
+        }
+
+        #charts {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="heading">
+    <img src="../img/left-icon.png" alt="">
+    <p>销售报表</p>
+</div>
+
+<div id="content">
+    <div id="left_content">
+        <div id="left_content_top">
+            <span>汽车总售价(元)</span>
+            <p>18,150,000</p>
+        </div>
+
+        <div id="left_content_center">
+            <div>
+                <p>汽车价格(元)</p>
+                <p>120,000</p>
+                <p>大众汽车价格</p>
+            </div>
+            <div>
+                <p>汽车价格(元)</p>
+                <p>120,000</p>
+                <p>大众汽车价格</p>
+            </div>
+            <div>
+                <p>汽车价格(元)</p>
+                <p>120,000</p>
+                <p>大众汽车价格</p>
+            </div>
+        </div>
+
+        <div id="left_content_bottom">
+            <div id="charts">
+                <script type="text/javascript">
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('charts'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        xAxis: {
+                            name: '(月)',
+                            data: ['8月1日', '8月2日', '8月3日', '8月3日', '8月5日', '8月6日', '8月7日']
+                        },
+                        yAxis: {
+                            name: '(万元)',
+                            type: 'value',
+                            max: 40
+                        },
+                        label: {
+                            show: true
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        series: [{
+                            data: [12, 34, 5, 3, 22, 12, 32],
+                            type: 'line'
+                        }]
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                </script>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="right_content">
+
+    </div>
+</div>
+</body>
+</html>
