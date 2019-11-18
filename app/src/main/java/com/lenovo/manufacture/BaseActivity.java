@@ -29,14 +29,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
-    protected void initWebView(TWebView webView, FrameLayout frameLayout) {
+    protected void initWebView(TWebView webView, FrameLayout frameLayout, String url) {
 
         frameLayout.addView(webView, new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
 
         //载入网址
-        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(url);
         //设置Web View Client
         webView.setWebViewClient(new WebViewClient() {
             /**
