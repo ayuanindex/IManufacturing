@@ -1,46 +1,39 @@
 package com.lenovo.manufacture;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-/**
- * @author Amoly
- * @date 2019/10/24.
- * GitHub：
- * email：
- * description：
- */
-public class MainActivity extends AppCompatActivity {
-
+public abstract class BaseActivity extends AppCompatActivity {
+    private FrameLayout frameLayout;
+    private ProgressBar progressBar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-//        initView();
+        setContentView(R.layout.activity_base);
+        initView();
+    }
+
+    private void initView() {
+        frameLayout = (FrameLayout) findViewById(R.id.webView1);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         initWebView();
     }
 
-    @SuppressLint({"SetJavaScriptEnabled"})
-    private void initWebView() {
+    protected void initWebView() {
 
         TWebView webView = new TWebView(this, null);
-        ViewGroup viewParent = findViewById(R.id.webView1);
-        viewParent.addView(webView, new FrameLayout.LayoutParams(
+        frameLayout.addView(webView, new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
 
@@ -88,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         //请求重点
         webView.requestFocus();
         //添加Javascript接口
-        webView.addJavascriptInterface(new JavaScriptInterface(this), "nativeMethod");
+        setJavaScriptInterface();
         WebSettings webSetting = webView.getSettings();
         //设置允许文件访问
         webSetting.setAllowFileAccess(true);
@@ -128,26 +121,5 @@ public class MainActivity extends AppCompatActivity {
         webSetting.setDefaultZoom(zoomDensity);
     }
 
-
-    public class JavaScriptInterface {
-        Activity mActivity;
-
-        JavaScriptInterface(Activity mActivity) {
-            this.mActivity = mActivity;
-        }
-
-        /**
-         * 与js交互时用到的方法，在js里直接调用的
-         */
-        @JavascriptInterface
-        public void startActivity() {
-            Intent intent = new Intent();
-//            intent.putExtra("fromWhich", "webViewUrl");
-//            intent.putExtra("replyID", "replyID");
-            intent.setClass(mActivity, TestActivity.class);
-            mActivity.startActivity(intent);
-        }
-
-    }
-
+    public abstract void setJavaScriptInterface();
 }
