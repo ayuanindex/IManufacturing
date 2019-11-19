@@ -15,6 +15,7 @@
         style="@style/WebViewProgressBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="#402C8B"
         android:maxHeight="3dip"
         android:minHeight="3dip" />
 </LinearLayout>
