@@ -13,6 +13,7 @@ import com.lenovo.manufacture.bean.SalesReportBean;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Amoly
@@ -58,10 +59,6 @@ public class TestActivity extends BaseActivity {
             this.activity = activity;
         }
 
-        @JavascriptInterface
-        public void onBack() {
-            finish();
-        }
 
         /**
          * 模拟生成数据
@@ -83,6 +80,11 @@ public class TestActivity extends BaseActivity {
             }
             Log.i(TAG, "哈哈哈：" + saleReports.toString());
             return saleReports;
+        }
+
+        @JavascriptInterface
+        public void onBack() {
+            finish();
         }
     }
 }

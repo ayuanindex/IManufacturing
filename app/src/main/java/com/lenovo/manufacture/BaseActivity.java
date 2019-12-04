@@ -65,30 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         });
 
-        webView.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-                AlertDialog builder = new AlertDialog.Builder(BaseActivity.this)
-                        .setTitle("来自网页的提示")
-                        .setMessage(message)
-                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                result.cancel();
-                            }
-                        })
-                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                result.confirm();
-                            }
-                        })
-                        .show();
-                return true;
-            }
-        });
+        setWebChrome(webView);
 
         //设置启用Java脚本
         webView.getSettings().setJavaScriptEnabled(true);
@@ -137,6 +114,33 @@ public abstract class BaseActivity extends AppCompatActivity {
                 break;
         }
         webSetting.setDefaultZoom(zoomDensity);
+    }
+
+    public void setWebChrome(TWebView webView) {
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                AlertDialog builder = new AlertDialog.Builder(BaseActivity.this)
+                        .setTitle("来自网页的提示")
+                        .setMessage(message)
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                result.cancel();
+                            }
+                        })
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                result.confirm();
+                            }
+                        })
+                        .show();
+                return true;
+            }
+        });
     }
 
     public abstract void addJavaScriptInterface();
