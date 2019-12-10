@@ -9,16 +9,14 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 
+import com.google.gson.JsonArray;
 import com.lenovo.manufacture.bean.SalesReportBean;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import okhttp3.TlsVersion;
-import okhttp3.internal.Util;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * @author Amoly
@@ -73,7 +71,7 @@ public class TestActivity extends BaseActivity {
             salesReportBeans = new ArrayList<>();
             //生成对象集合
             for (int i = 1; i <= 10; i++) {
-                salesReportBeans.add(new SalesReportBean(i + "哈哈汽车", Math.pow(i * 100, 2), new Date().toLocaleString(), i + ""));
+                salesReportBeans.add(new SalesReportBean(i + "哈哈汽车", Math.pow(i * 100, 2), new Date().toLocaleString(), i));
             }
             /*Utils.sort(salesReportBeans, new Utils.Com<SalesReportBean>() {
                 @Override

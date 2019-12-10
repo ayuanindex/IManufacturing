@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="../flexible.min.js" type="text/javascript"></script>
+    <script src="../util.js"></script>
     <style>
         body {
             background-color: #9E9E9E;
@@ -110,16 +112,39 @@
             <p>质检员</p>
         </div>
     </div>
+
+    <div class="father">
+        <p>位置 4</p>
+        <div>
+            <div class="redBlock gc"></div>
+            <p>工程师</p>
+            <div style="margin: auto">
+                <div class="child">
+                    <div class="redBlock js"></div>
+                    <p>技术员</p>
+                </div>
+                <div class="child">
+                    <div class="redBlock cz"></div>
+                    <p>操作员</p>
+                </div>
+            </div>
+            <div class="redBlock zj"></div>
+            <p>质检员</p>
+        </div>
+    </div>
 </div>
 <script>
-    var gcs = document.getElementsByClassName('gc');
+    /*请求数据查看有几条产品线,假如只有一条生产线*/
+    var lines = document.getElementsByClassName('father');
+
+    /*var gcs = document.getElementsByClassName('gc');
     var jss = document.getElementsByClassName('js');
     var czs = document.getElementsByClassName('cz');
     var zjs = document.getElementsByClassName('zj');
 
     gcs[0].style.backgroundColor = '#000fff';
     gcs[1].style.backgroundColor = '#00ff00';
-    gcs[2].style.backgroundColor = '#fff000';
+    gcs[2].style.backgroundColor = '#fff000';*/
 </script>
 </body>
 </html>

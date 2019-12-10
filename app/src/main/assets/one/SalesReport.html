@@ -254,6 +254,51 @@
         <!--自动生成对应的列表-->
         <div id="right_content_bottom">
             <script type="text/javascript">
+                /*"data": [
+                    {
+                        "UserSellInfo_16989": {
+                            "id": 16989,
+                            "userFactoryId": 1,
+                            "carTypeId": 2,
+                            "price": 800,
+                            "time": 1576135879,
+                            "num": 5,
+                            "lastUpdateTime": null,
+                            "carTypeName": "MPV汽车"
+                        }
+                    }]*/
+                var persons = [];
+
+                function getSellInfo() {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://10.119.183.241:8085/Interface/index/userSellInfoTEditer',
+                        contentType: 'application/json;charset=UTF-8',
+                        data: '',
+                        dataType: 'json',
+                        success: function (result) {
+                            if (result.status === 200) {
+                                var datas = result.data;
+                                /*for (let i = 0; i < datas.length; i++) {
+
+                                    for (let datumKey in datas[i]) {
+                                        var datum = datas[i][datumKey];
+                                        //将需要的数据解析成自己想要的对象数组
+                                        persons.push(new SalesReportBean(datum.carTypeName, datum.price, new Date(datum.time).toLocaleString(), datum.num));
+                                    }
+                                }
+                                for (let person of persons) {
+                                    createDom(person.carName, person.price, person.outTime, person.outCount);
+                                }*/
+                            } else {
+                                getSellInfo();
+                            }
+                        }
+                    });
+                }
+
+                getSellInfo();
+
                 /*创建构造函数*/
                 function SalesReportBean(carName, price, outTime, outCount) {
                     this.carName = carName;
@@ -265,13 +310,31 @@
                     };
                 }
 
-                var persons = [];
+                function createDom(a, b, c, d) {
+                    let father = document.getElementById('right_content_bottom');
+                    let divFather = document.createElement('div');
+                    let carName = document.createElement('p');
+                    carName.innerText = a + '';
+                    let price = document.createElement('p');
+                    price.innerText = b + '';
+                    let outTime = document.createElement('p');
+                    outTime.innerText = c + '';
+                    let outCount = document.createElement('p');
+                    outCount.innerText = d + '';
+                    divFather.appendChild(carName);
+                    divFather.appendChild(price);
+                    divFather.appendChild(outTime);
+                    divFather.appendChild(outCount);
+                    father.appendChild(divFather);
+                }
+
+                /*var persons = [];
                 for (let i = 0; i < 200; i++) {
                     persons.push(new SalesReportBean('你好' + i, 12000, new Date().toLocaleString(), (i + 1) * Math.random()));
                 }
-                /*for (let i = 0; i < persons.length; i++) {
+                /!*for (let i = 0; i < persons.length; i++) {
                     TestActivity.printLog(persons[i].toString());
-                }*/
+                }*!/
                 persons.sort(function (a, b) {
                     return a.outCount - b.outCount;
                 });
@@ -291,7 +354,7 @@
                     divFather.appendChild(outTime);
                     divFather.appendChild(outCount);
                     father.appendChild(divFather);
-                }
+                }*/
             </script>
             <!--<div>
                 <p>名称</p>

@@ -1,12 +1,17 @@
 package com.lenovo.manufacture.bean;
 
+import java.util.Timer;
+
 public class SalesReportBean {
     private String carName;
     private double price;
     private String outTime;
-    private String outCount;
+    private int outCount;
 
-    public SalesReportBean(String carName, double price, String outTime, String outCount) {
+    public SalesReportBean() {
+    }
+
+    public SalesReportBean(String carName, double price, String outTime, int outCount) {
         this.carName = carName;
         this.price = price;
         this.outTime = outTime;
@@ -37,16 +42,16 @@ public class SalesReportBean {
         this.outTime = outTime;
     }
 
-    public String getOutCount() {
+    public int getOutCount() {
         return outCount;
     }
 
-    public void setOutCount(String outCount) {
+    public void setOutCount(int outCount) {
         this.outCount = outCount;
     }
 
     @Override
     public String toString() {
-        return carName + "," + price + "," + outTime + "," + outCount;
+        return this.carName + "," + this.price + "," + this.outTime + "," + this.outCount;
     }
 }

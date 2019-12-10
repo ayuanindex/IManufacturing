@@ -1,10 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
-
 ext {
     SUPPORT_LIBRARY_VERSION = '28.0.3'
 }
-
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
@@ -98,4 +96,7 @@ android {
         //litepal(数据库框架)
         implementation 'org.litepal.android:java:3.0.0'
     }
+}
+dependencies {
+    implementation files('libs/volley.jar')
 }
