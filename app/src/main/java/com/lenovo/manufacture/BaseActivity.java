@@ -1,5 +1,6 @@
 package com.lenovo.manufacture;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -31,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     protected void initWebView(TWebView webView, FrameLayout frameLayout, String url) {
 
         frameLayout.addView(webView, new FrameLayout.LayoutParams(

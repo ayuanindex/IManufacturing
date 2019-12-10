@@ -12,8 +12,13 @@ import androidx.annotation.Nullable;
 import com.lenovo.manufacture.bean.SalesReportBean;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+
+import okhttp3.TlsVersion;
+import okhttp3.internal.Util;
 
 /**
  * @author Amoly
@@ -39,7 +44,6 @@ public class TestActivity extends BaseActivity {
     private void initView() {
         fragmentLayout = (FrameLayout) findViewById(R.id.fragmentLayout);
         webView = new TWebView(this);
-
         initWebView(webView, fragmentLayout, "file:///android_asset/one/SalesReport.html");
     }
 
@@ -48,7 +52,7 @@ public class TestActivity extends BaseActivity {
     public void addJavaScriptInterface() {
         String localClassName = getLocalClassName();
         TestJavaScript obj = new TestJavaScript(TestActivity.this);
-        obj.getData();
+        obj.getDatas();
         webView.addJavascriptInterface(obj, localClassName);
     }
 
@@ -59,32 +63,40 @@ public class TestActivity extends BaseActivity {
             this.activity = activity;
         }
 
-
         /**
          * 模拟生成数据
          *
-         * @return
+         * @return 返回转换成数组的集合
          */
         @JavascriptInterface
-        public String[] getData() {
+        public String[] getDatas() {
             salesReportBeans = new ArrayList<>();
             //生成对象集合
-            for (int i = 1; i <= 100; i++) {
+            for (int i = 1; i <= 10; i++) {
                 salesReportBeans.add(new SalesReportBean(i + "哈哈汽车", Math.pow(i * 100, 2), new Date().toLocaleString(), i + ""));
             }
-
+            /*Utils.sort(salesReportBeans, new Utils.Com<SalesReportBean>() {
+                @Override
+                public int compare(SalesReportBean value1, SalesReportBean value2) {
+                    return (int) (value2.getPrice() - value1.getPrice());
+                }
+            });玄学排序*/
             String[] saleReports = new String[salesReportBeans.size()];
-
             for (int i = 0; i < salesReportBeans.size(); i++) {
                 saleReports[i] = salesReportBeans.get(i).toString();
+                Log.i(TAG, "哈哈哈：" + salesReportBeans.get(i).toString());
             }
-            Log.i(TAG, "哈哈哈：" + saleReports.toString());
             return saleReports;
         }
 
         @JavascriptInterface
         public void onBack() {
             finish();
+        }
+
+        @JavascriptInterface
+        public void printLog(String msg) {
+            Log.i(TAG, "呵呵呵：" + msg);
         }
     }
 }

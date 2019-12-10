@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #9E9E9E;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+        }
+
+        .redBlock {
+            width: 100px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: red;
+            display: inline-block;
+        }
+
+        .father {
+            width: 400px;
+            background-color: white;
+            margin: 10px;
+            display: inline-block;
+            align-content: center;
+        }
+
+        .father > div > div:nth-child(3) {
+            display: flex;
+        }
+
+        .father > div {
+            display: grid;
+        }
+
+        .child {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="father">
+        <p>位置 1</p>
+        <div>
+            <div class="redBlock gc"></div>
+            <p>工程师</p>
+            <div style="margin: auto">
+                <div class="child">
+                    <div class="redBlock js"></div>
+                    <p>技术员</p>
+                </div>
+                <div class="child">
+                    <div class="redBlock cz"></div>
+                    <p>操作员</p>
+                </div>
+            </div>
+            <div class="redBlock zj"></div>
+            <p>质检员</p>
+        </div>
+    </div>
+
+    <div class="father">
+        <p>位置 2</p>
+        <div>
+            <div class="redBlock gc"></div>
+            <p>工程师</p>
+            <div style="margin: auto">
+                <div class="child">
+                    <div class="redBlock js"></div>
+                    <p>技术员</p>
+                </div>
+                <div class="child">
+                    <div class="redBlock cz"></div>
+                    <p>操作员</p>
+                </div>
+            </div>
+            <div class="redBlock zj"></div>
+            <p>质检员</p>
+        </div>
+    </div>
+
+    <div class="father">
+        <p>位置 3</p>
+        <div>
+            <div class="redBlock gc"></div>
+            <p>工程师</p>
+            <div style="margin: auto">
+                <div class="child">
+                    <div class="redBlock js"></div>
+                    <p>技术员</p>
+                </div>
+                <div class="child">
+                    <div class="redBlock cz"></div>
+                    <p>操作员</p>
+                </div>
+            </div>
+            <div class="redBlock zj"></div>
+            <p>质检员</p>
+        </div>
+    </div>
+</div>
+<script>
+    var gcs = document.getElementsByClassName('gc');
+    var jss = document.getElementsByClassName('js');
+    var czs = document.getElementsByClassName('cz');
+    var zjs = document.getElementsByClassName('zj');
+
+    gcs[0].style.backgroundColor = '#000fff';
+    gcs[1].style.backgroundColor = '#00ff00';
+    gcs[2].style.backgroundColor = '#fff000';
+</script>
+</body>
+</html>

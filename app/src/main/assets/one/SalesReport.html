@@ -41,7 +41,7 @@
             /*padding: 1px;*/
             margin: 0;
             width: 100%;
-            height: 680px;
+            height: 833px;
             overflow: hidden;
             /*800(手机屏幕高度) - 728（浏览器调试时模拟的高度） = 72(相当于手机状态栏位置)*/
             display: flex;
@@ -106,7 +106,7 @@
             margin: 10px 5px 10px 10px;
             background: #ffffff;
             width: auto;
-            height: 454px;
+            height: 572px;
             text-align: center;
         }
 
@@ -160,7 +160,7 @@
             margin-left: 5px;
             margin-right: 10px;
             margin-bottom: 10px;
-            height: 614px; /*680 - 32 = 638*/
+            height: 762px; /*680 - 32 = 638*/
             overflow: scroll;
         }
 
@@ -251,20 +251,41 @@
             <p>卖出数量</p>
         </div>
 
+        <!--自动生成对应的列表-->
         <div id="right_content_bottom">
             <script type="text/javascript">
-                for (let i = 1; i <= 100; i++) {
-                    let father = document.getElementById('right_content_bottom');
+                /*创建构造函数*/
+                function SalesReportBean(carName, price, outTime, outCount) {
+                    this.carName = carName;
+                    this.price = price;
+                    this.outTime = outTime;
+                    this.outCount = outCount;
+                    this.toString = function () {
+                        return this.carName + '     ' + this.price + '     ' + this.outTime + '     ' + this.outCount;
+                    };
+                }
 
+                var persons = [];
+                for (let i = 0; i < 200; i++) {
+                    persons.push(new SalesReportBean('你好' + i, 12000, new Date().toLocaleString(), (i + 1) * Math.random()));
+                }
+                /*for (let i = 0; i < persons.length; i++) {
+                    TestActivity.printLog(persons[i].toString());
+                }*/
+                persons.sort(function (a, b) {
+                    return a.outCount - b.outCount;
+                });
+                for (let i = 0; i < persons.length; i++) {
+                    let father = document.getElementById('right_content_bottom');
                     let divFather = document.createElement('div');
                     let carName = document.createElement('p');
-                    carName.innerText = '大众汽车';
+                    carName.innerText = persons[i].carName + '';
                     let price = document.createElement('p');
-                    price.innerText = '12000';
+                    price.innerText = persons[i].price + '';
                     let outTime = document.createElement('p');
-                    outTime.innerText = new Date().toLocaleString();
+                    outTime.innerText = persons[i].outTime + '';
                     let outCount = document.createElement('p');
-                    outCount.innerText = i + '';
+                    outCount.innerText = persons[i].outCount + '';
                     divFather.appendChild(carName);
                     divFather.appendChild(price);
                     divFather.appendChild(outTime);
