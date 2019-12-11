@@ -9,11 +9,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 
-import com.google.gson.JsonArray;
 import com.lenovo.manufacture.bean.SalesReportBean;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -13,9 +13,19 @@
     <style name="WebViewProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:indeterminateOnly">false</item>
         <item name="android:progressDrawable">@drawable/progress_horizontal</item>
-        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
         <item name="android:minHeight">20dip</item>
         <item name="android:maxHeight">20dip</item>
+    </style>
+
+    <style name="FullScreen" parent="AppTheme">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">#000000</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>

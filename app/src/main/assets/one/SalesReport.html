@@ -254,19 +254,33 @@
         <!--自动生成对应的列表-->
         <div id="right_content_bottom">
             <script type="text/javascript">
-                /*"data": [
-                    {
-                        "UserSellInfo_16989": {
-                            "id": 16989,
-                            "userFactoryId": 1,
-                            "carTypeId": 2,
-                            "price": 800,
-                            "time": 1576135879,
-                            "num": 5,
-                            "lastUpdateTime": null,
-                            "carTypeName": "MPV汽车"
+                function tests() {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://10.119.183.241:8085/dataInterface/UserWorkEnvironmental/updateAcOnOff',
+                        contentType: 'application/json;charset=UTF-8',
+                        data: {"id": 1, "acOnOff": 3},
+                        dataType: 'json',
+                        success: function (result) {
+                            var message = result.data.acOnOff;
+                            switch (message) {
+                                case '0':
+                                    console.log('关闭');
+                                    break;
+                                case '1':
+                                    console.log('冷风');
+                                    break;
+                                case '2':
+                                    console.log('暖风');
+                                    break;
+                            }
                         }
-                    }]*/
+                    });
+                }
+
+                tests();
+
                 var persons = [];
 
                 function getSellInfo() {
@@ -274,12 +288,12 @@
                         type: 'POST',
                         url: 'http://10.119.183.241:8085/Interface/index/userSellInfoTEditer',
                         contentType: 'application/json;charset=UTF-8',
-                        data: '',
+                        data: {},
                         dataType: 'json',
                         success: function (result) {
                             if (result.status === 200) {
                                 var datas = result.data;
-                                /*for (let i = 0; i < datas.length; i++) {
+                                for (let i = 0; i < datas.length; i++) {
 
                                     for (let datumKey in datas[i]) {
                                         var datum = datas[i][datumKey];
@@ -289,7 +303,7 @@
                                 }
                                 for (let person of persons) {
                                     createDom(person.carName, person.price, person.outTime, person.outCount);
-                                }*/
+                                }
                             } else {
                                 getSellInfo();
                             }
@@ -355,6 +369,18 @@
                     divFather.appendChild(outCount);
                     father.appendChild(divFather);
                 }*/
+
+                var jsonData = '{"userLineId" : 2432,"num" : 2 , "supplyListId":1}';
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://10.119.183.241:8085/Interface/index/addUserMaterialStore',
+                    contentType: 'application/json;charset-UTF-8',
+                    data: jsonData,
+                    dataType: 'json',
+                    success: function (result) {
+                        /*test paper*/
+                    }
+                });
             </script>
             <!--<div>
                 <p>名称</p>

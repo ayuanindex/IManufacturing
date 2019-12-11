@@ -17,6 +17,8 @@ import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.lenovo.manufacture.activity.BannerActivity;
+
 /**
  * @author Amoly
  * @date 2019/10/24.
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = new Intent(this, BannerActivity.class);
+        startActivity(intent);
         setContentView(R.layout.activity_main);
 //        initView();
         initWebView();
