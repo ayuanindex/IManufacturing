@@ -2,6 +2,9 @@ package com.lenovo.manufacture;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 /**
@@ -13,5 +16,8 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("id", "1");
+        map.put("string", "strin");
     }
 }
